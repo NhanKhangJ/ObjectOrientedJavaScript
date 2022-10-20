@@ -1,4 +1,4 @@
-// //creating obj
+                                                /*creating object */
 // let userOne = {
 //    email: 'ryu@ninjas.com',
 //    name: 'Ryu',
@@ -23,7 +23,7 @@
 //     //add an function to the object
 // }
 
-//classes emulated the ideal of javascript
+                                                /*classes emulated the ideal of javascript */
 
 // class User {
 //     constructor(email, name){ //responible for creating new object base on the class
@@ -33,7 +33,7 @@
 //     }
 //     login(){ //class methods
 //         console.log(this.email, 'just logged in')
-//         return this; // return the instance of the object help us to be able to chainning the object
+//         return this; // return the instance of the object help us to be able to chainning the method object
 //     }
 //     logout(){
 //         console.log(this.email, 'just logged out');
@@ -87,14 +87,14 @@
 // app.js:39 Nhan@afa.com just logged out
 
 
-//constructor function and Protopyte
+                                              /* constructor function and Protopyte */
 function User(email,name){
     this.email = email;
     this.name = name;
     this.online= false;
 }
 
-//now the function is inside the prototype
+//now the function is inside the prototype of User
 User.prototype.login = function(){
     this.online = true;
     console.log(this.email, 'has logged in');
@@ -106,21 +106,24 @@ User.prototype.loout = function(){
 
 }
 
+//create another object constructor base on User
 function Admin(...args){ //take all the parameter and turning them into the array
     //this === this inside the user, biding the context of this keyword to that new object and pass to this function
-    User.apply(this, args); //take that User constructur to be a formula
-    this.role= 'super admin';     
+    User.apply(this, args); //take that User constructur to be a formula, this is pointing to the object you are going to be created with the argument that you pass in
+    this.role= 'super admin'; // asign a key of role with the value of 'superadmin'    
 }
 
 // class Admin extends User{
 //     constructor(email, name, role){
-//         super(email,name){
-
-//         }
+//         super(email,name)           //compare to class constructure
+ 
+//        this.role= role; 
 //     }
 // }
 
-Admin.prototype = Object.create(User.prototype); //iheritate user prototype to the admin prototype
+
+//iheritate user prototype to the admin prototype
+Admin.prototype = Object.create(User.prototype); 
 
 //adding the additional functionality to Admin prototype only
 Admin.prototype.deleteUser = function(user){
